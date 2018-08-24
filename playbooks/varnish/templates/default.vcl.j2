@@ -6,6 +6,13 @@ import directors;
 backend www{{ loop.index }} {
   .host = "{{ host }}";
   .port = "80";
+  .probe ={
+          .url = "/";
+          .interval = 2s;
+          .timeout = 1 s;
+          .window =5;
+          .threshold = 3;
+     }
 }
 {% endfor %}
 
